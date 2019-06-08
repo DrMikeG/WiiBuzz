@@ -1,0 +1,97 @@
+Connected ESP board to programmer
+
+Connected programmer to Mac
+Opened Arduino software
+Opened serial monitor,
+Selected serial port  /dev/vc.SLAB_USBtoUART
+Set baud rate to 115200
+Sent command AT
+
+https://room-15.github.io/blog/2015/03/26/esp8266-at-command-reference/
+
+20:25:53.113 -> AT+GMR
+20:25:53.113 -> AT version:1.2.0.0(Jul  1 2016 20:04:45)
+20:25:53.113 -> SDK version:1.5.4.1(39cb9a32)
+20:25:53.113 -> v1.0.0
+20:25:53.113 -> Mar 11 2018 18:27:31
+20:25:53.113 -> OK
+
+
+How to program?
+
+Setup arduino compiler
+Two libraries...
+
+Used instructions here to set board url:
+https://arduino-esp8266.readthedocs.io/en/latest/installing.html
+in perferences.
+Now I can install the board in board manager.
+
+Installing  https://github.com/esp8266/Arduino
+esp8266 community library
+
+I got this error : ESP8266.ino:9:25: fatal error: ESP8266WiFi.h: No such file or directory
+Looks like you didn't select "Generic ESP8266 WiFi board" in the Arduino IDE. Can you check that?
+
+
+Programming my first board.
+Hit upload, quickly pressed button on side of programming board.
+Following output on arduino IDE:
+
+Sketch uses 272480 bytes (54%) of program storage space. Maximum is 499696 bytes.
+Global variables use 26840 bytes (32%) of dynamic memory, leaving 55080 bytes for local variables. Maximum is 81920 bytes.
+esptool.py v2.6
+2.6
+esptool.py v2.6
+Serial port /dev/cu.SLAB_USBtoUART
+Connecting........_
+Chip is ESP8266EX
+Features: WiFi
+MAC: cc:50:e3:38:06:d7
+Uploading stub...
+Running stub...
+Stub running...
+Configuring flash size...
+Auto-detected Flash size: 1MB
+Flash params set to 0x0320
+Compressed 276640 bytes to 199718...
+
+Writing at 0x00000000... (7 %)
+Writing at 0x00004000... (15 %)
+Writing at 0x00008000... (23 %)
+Writing at 0x0000c000... (30 %)
+Writing at 0x00010000... (38 %)
+Writing at 0x00014000... (46 %)
+Writing at 0x00018000... (53 %)
+Writing at 0x0001c000... (61 %)
+Writing at 0x00020000... (69 %)
+Writing at 0x00024000... (76 %)
+Writing at 0x00028000... (84 %)
+Writing at 0x0002c000... (92 %)
+Writing at 0x00030000... (100 %)
+Wrote 276640 bytes (199718 compressed) at 0x00000000 in 21.2 seconds (effective 104.3 kbit/s)...
+Hash of data verified.
+
+Leaving...
+Hard resetting via RTS pin...
+
+Output on serial monitor...
+
+20:57:54.809 -> 
+20:57:54.809 -> 
+20:57:54.809 -> Connecting to VM4826469
+20:57:55.473 -> ...........
+20:58:01.287 -> WiFi connected
+20:58:01.287 -> IP address: 
+20:58:01.287 -> (IP unset)
+
+
+
+
+I'm now trying to setup a soft access point following example here:
+https://arduino-esp8266.readthedocs.io/en/latest/esp8266wifi/soft-access-point-examples.html
+
+Might be best if my IOT network was independent of our home wifi?
+
+This actually seems to work, which is pretty amazing!
+

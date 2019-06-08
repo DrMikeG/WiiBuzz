@@ -1,0 +1,48 @@
+Plan.
+
+Button indoors which connects to wifi.
+Server outdoor which connects to wifi
+
+Push button is detected by server. Light flashes.
+
+Broken torch provides light.
+
+Torch runs at 3.5V.
+
+12 LEDs to flash.
+Constant draw was 60ma at 3.5V
+Could I half this with PWM?
+
+Planning to use ESP8266 ESP01's as transmitter and reciever.
+
+Should test reception in mancave as first test.
+
+Power? How do you power one?
+I have a power supply, 3.5V and plenty of 5V?
+https://www.youtube.com/watch?v=j21CMZ6Lrfc
+Sucks a lot of power.
+
+20 - 250ma!
+
+
+
+    x   x   x   x
+    
+    x   x   x   x
+
+
+Light to show connection - Can I use onboard LED?
+
+
+I've had a lot of luck with my programming tonight.
+I've had three examples working:
+
+1) Connect to home wifi (FirstConnect.ino)
+2) Act as a SoftAP and allow phone to connect to isolated IOT wifi (SoftAP)
+3) Serve a webpage toggling GPIO pin with LED on - (WebPage.ino)
+
+I think I want a combination of these - but I need to know more about the SoftAP
+
+I want a transistor to power the LEDs.
+
+The programming board is providing a really handy power supply. Perhaps I should got another?
