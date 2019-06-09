@@ -46,3 +46,18 @@ I think I want a combination of these - but I need to know more about the SoftAP
 I want a transistor to power the LEDs.
 
 The programming board is providing a really handy power supply. Perhaps I should got another?
+
+
+Read and digest these pages: https://tttapa.github.io/ESP8266/Chap02%20-%20Hardware.html
+
+Before you begin ...
+There's a few things you have to look out for when using an ESP8266: The most important thing is that it runs at 3.3V, so if you connect it to a 5V power supply, you'll kill it. Unlike some 3.3V Arduino or Teensy boards, the ESP8266's I/O pins are not 5V tolerant, so if you use a 5V USB-to-Serial converter, or 5V sensors etc. you'll blow it up.
+A second thing to keep in mind is that the ESP8266 can only source or sink 12mA per output pin, compared to 20-40mA for most Arduinos.
+
+mDNS - lets have DNS on our IOT
+
+I have ordered 10x LT1117 5V to 3.3V regulators.
+Capable up to 950ma
+These need pairing with two 10uF capacitors.
+
+Next I need a transistor I can use to control 60ma @ 3V...
