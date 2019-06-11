@@ -7,6 +7,7 @@ const char* password = "z8gGpcvqjhpk";
 
 WiFiClient espClient;
 int SwitchedPin = 0;
+const int output2 =2; // Built in LED is on Pin 2
 
 void setup_wifi() {
  Serial.begin(115200);
@@ -31,7 +32,8 @@ void setup_wifi() {
   Serial.println("IP address: ");
   Serial.println(WiFi.localIP());
 
-  
+  pinMode(output2, OUTPUT);
+  digitalWrite(output2, LOW);
  
 }
 
@@ -55,5 +57,8 @@ void setup()
  
 void loop()
 {
-  
+  digitalWrite(output2, HIGH);
+  delay(500);
+  digitalWrite(output2, LOW);
+  delay(500);
 }

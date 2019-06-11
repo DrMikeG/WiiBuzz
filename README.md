@@ -126,5 +126,5 @@ doesn't seem to support mDNS lookup?
 
 Still waiting for power.
 Going to use USB to get 5V. For server, this needs splitting into two 3.3V supplies.
-
+Build in LED is on Pin 2
 Not sure about design of switch yet...
