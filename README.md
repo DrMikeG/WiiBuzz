@@ -128,3 +128,52 @@ Still waiting for power.
 Going to use USB to get 5V. For server, this needs splitting into two 3.3V supplies.
 Build in LED is on Pin 2
 Not sure about design of switch yet...
+
+# 2019_06_16 
+
+The 'server' can switch an LED that it is directly powering, but I need to switch the power or ground to the LED matrix.
+
+The LED matrix can pull 60ma (surprised it is this low) - so I am going to power this separately.
+
+Need either and NPN or PNP transitors, depending on if I am switching the ground of the power of the circuit.
+What is best for the ESP?
+
+https://electronics.stackexchange.com/questions/211579/npn-transistor-is-always-on?rq=1
+NPN transistor switching the ground out of the maxtrix...
+The downside of this is that it means the matrix is always on...
+
+
+I should be able to use a PNP transistor to switch the power rather than the ground...
+https://www.electronics-tutorials.ws/transistor/tran_4.html
+
+Need to be careful, as will be sinking some of the current when turned we pull the PNP base pin to ground.
+Voltage divider (43Ko v 620o) ensures current flows through LED.
+Resistor is between LED - and ground...
+
+
+PN2222 - Type - NPN
+Collector-Emitter Voltage: 30 V
+Collector-Base Voltage: 60 V
+Emitter-Base Voltage: 5 V
+Collector Current: 0.6 A
+Collector Dissipation - 0.625 W
+DC Current Gain (hfe) - 100 to 300
+Transition Frequency - 300 MHz
+Operating and Storage Junction Temperature Range -55 to +150 °C
+Package - TO-92
+
+https://www.el-component.com/bipolar-transistors/pn2222
+
+In stock I seem to have
+
+TR3906 https://solarbotics.com/product/tr3906/ https://cdn.solarbotics.com/products/datasheets/2n3906.pdf (100ma)
+TR3904 https://cdn.solarbotics.com/products/datasheets/2n3904.pdf (100ma)
+TR2907 https://cdn.solarbotics.com/products/datasheets/pn2907a.pdf (500ma)
+
+
+With flat side up, left to right is EBC
+
+
+There are two ways to bypass the resistor. One way is to lower the input voltage. If you are able to run your complete circuit with the same voltage as forward voltage of the LED, perfect. No resistor needed.
+
+There is a 3V Vf = LED forward voltage drop in Volts (found in the LED datasheet) for the matrix.
