@@ -177,3 +177,50 @@ With flat side up, left to right is EBC
 There are two ways to bypass the resistor. One way is to lower the input voltage. If you are able to run your complete circuit with the same voltage as forward voltage of the LED, perfect. No resistor needed.
 
 There is a 3V Vf = LED forward voltage drop in Volts (found in the LED datasheet) for the matrix.
+
+I suspect you are trying to drive the PNP base with a 3.3V logic signal while controlling 5V to the buzzer. That just isn't going to work. To turn the transistor off (non-conducting) you need to raise the voltage on the base to be close to the emitter voltage, or about 5V. You can't do that with a 3.3V logic signal. You make a PNP transistor conduct by lowering the base voltage about 0.7V below the emitter voltage, not by setting the base voltage to 0.7V above ground.
+
+You might be able to add a pullup resistor from the base itself to 5V to turn the transistor off when the logic output is 3.3V. Select resistor values so that when the 3.3V signal is low the voltage at the base is less than 4.3V. You would also have to select resistor values that limit the current that will flow back into the 3.3V logic output when that output signal is high. This is all just speculation, you haven't provided a datasheet for the device that is driving the base.
+
+https://forum.arduino.cc/index.php?topic=602676.0
+
+https://learn.sparkfun.com/tutorials/transistors/all
+
+So, I have 3.3V pushing into the Collector of the PNP transistor.
+If base is connected directly to ground, all that current would rush through.
+The voltage drop across that path to base is 0.7V
+So (3.3 - 0.7 = 2.4V) V=IR
+I want to put just 30ma (0.03A) because according to the data sheet that should give 100ma Ic
+The means the transistor has a multiplier of x2.
+
+I'm running 45ma through base, using a resistor 50 ohm resistor
+
+Using a 100ohm resistor, base current is 60ma, Ie is 20ma
+Using a 50o, Ie is 50ma
+
+2.4 = 50 * 0.05 (50ma)
+At 50ma, DC current gain is 60
+2.4 = 100 * 0.025 (25ma)
+
+Current applification should be between x60 and x100.
+
+# 2019_06_20 
+
+I now have 10 x PN2907A PNP tranistors.
+https://cdn-shop.adafruit.com/product-files/3598/PN2907A-D.PDF
+
+(IC = -0.1 mAdc, VCE = -10 Vdc) = 75
+(IC = -1.0 mAdc, VCE = -10 Vdc) = 100
+
+2.4 = 100 * 0.05 (100ma)
+
+
+I have 44ma flowing through the base
+I have 46ma flowing through the emitter.
+
+Should have 73ma.
+
+22 through base = 50 through emitter
+1000ohm 10 throuh em
+300ohm = 25
+60 thro 40base em 50 ohm
