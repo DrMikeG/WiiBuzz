@@ -230,25 +230,37 @@ Should have 73ma.
 Having had no more luck with drawing more than 60ma though LED, switched back to NPN transistor.
 2n2222
 
+
+Trying various resistor combinations on the base. 
+I don't understand the resistance of my led grid. 
+Depending on how I measure it, it's between 50ohm and 14k ohm
+
 led drawing 60ma 2.96v 
 V = I R
 2.96 = 0.06 * R = 49ohm
 
-Bypassing transistor, led draws 82
+Bypassing transistor, led draws 82ma
+This is my target current for full brightness. 
+Does the transistor voltage drop play a part here? 
 
-
-Base @ 40ma 50o - 74.6ma
+Base @ 40ma 50o resistor - 74.6ma for les
 Base @ ? 54o = 74
 Base 40 ? 62o = 73
 Base @ ? 75o = 72
-
 
 Base @ 23m 100o - 67ma
 Base @ ?m 112o - 63ma
 Base @ 17 150o - 52ma
 Base @ ? 330o - 64ma
 
-32 and 78ma
-67.8o made from 5 x 330o
+Using a 62ohm resistor made from a 50 and a 12
+32ma base current and 78ma led current. 
+Resistors getting hot though.
+Spread the heat.
+67.8o made from 5 x 330o resistors in parallel. 
 
-I think I cooked my first esp
+Connected my circuit to my esp. It is setup to switch gpio2 on command. 
+
+The esp is only rated to deliver 10ma, and I'm needing 32?
+What could I do. What if I insert and led between esp and base, decreasing the voltage drop. 
+I think I cooked my first esp, it is no longer responding. I may have connected the wrong lead. 
