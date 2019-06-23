@@ -224,3 +224,31 @@ Should have 73ma.
 1000ohm 10 throuh em
 300ohm = 25
 60 thro 40base em 50 ohm
+
+
+# 2019_06_23 
+Having had no more luck with drawing more than 60ma though LED, switched back to NPN transistor.
+2n2222
+
+led drawing 60ma 2.96v 
+V = I R
+2.96 = 0.06 * R = 49ohm
+
+Bypassing transistor, led draws 82
+
+
+Base @ 40ma 50o - 74.6ma
+Base @ ? 54o = 74
+Base 40 ? 62o = 73
+Base @ ? 75o = 72
+
+
+Base @ 23m 100o - 67ma
+Base @ ?m 112o - 63ma
+Base @ 17 150o - 52ma
+Base @ ? 330o - 64ma
+
+32 and 78ma
+67.8o made from 5 x 330o
+
+I think I cooked my first esp
