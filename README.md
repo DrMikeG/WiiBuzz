@@ -252,3 +252,27 @@ Base @ ? 330o - 64ma
 67.8o made from 5 x 330o
 
 I think I cooked my first esp
+
+introducing a second transistor to switch the first transitor. 
+simulated
+
+1k resistor on base, switching the base on q2
+
+1.6
+
+40
+
+# 2019_06_25 
+
+My current regulators have finally arrived!
+
+LM1117
+http://www.electronics-lab.com/project/3-3v-voltage-regulator/
+
+http://www.datasheetcafe.com/lm1117-datasheet-national/
+
+https://circuits4you.com/2016/12/14/power-supply-design-esp8266/
+
+https://www.instructables.com/id/LM1117-Linear-Voltage-Regulator/
+
+http://datasheetcafe.databank.netdna-cdn.com/wp-content/uploads/2015/09/LM1117-Pinout.gif
