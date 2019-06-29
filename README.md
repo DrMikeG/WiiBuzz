@@ -1,4 +1,4 @@
-# WiiBuzz
+# IOTorch project using esp8266?
 
 https://crazysqueak.wordpress.com/2015/12/17/hack-wimote-raspberry-pi/
 
@@ -10,12 +10,23 @@ https://www.raspberrypi.org/forums/viewtopic.php?t=32039
 
 https://youtu.be/9QZkCQSHnko
 
-ESP8266
+There was a whisper at work that we might need to aquire a quiz system, and my name had been dropped by a few people as it being possible to build one.
+I started thinking about hackng wii remotes connected to a raspberry pi to setup a lock out buzzer system.
+
+In my ramblng research I came up with two other projects.
+This is the first, which no longer has anything to do with Wii or buzzing.
+
+Instead, I'm using some ESP8266 (which are new to me) to put a broken LED torch onto the wireless, to act as a visual signal, sent from the house to my workshop.
+So, my wife, or one of the kids can press a button, and the torch out in the workshop will flash, getting my attention (even when I have ear defenders on).
+
+
+## ESP8266
 
 https://youtu.be/bl1T4iG5QKY
 
 https://youtu.be/zKeLOp91mmU
 
+My Daughter bought this torch with her pocket money. When we took it camping last, she lost the battery cover. I could have repaired it, but that wouldn't have been much of a lesson for her.
 
 Notes on torch I've pulled apart.
 
@@ -28,6 +39,7 @@ Three pads at the bottom of the matrix
 
 GND MATRIX VCC SINGLE VCC
 
+![alt text](./readme_img/inards.jpg "Donor torch inards")
 
 I'm now trying to setup a soft access point following example here:
 https://arduino-esp8266.readthedocs.io/en/latest/esp8266wifi/soft-access-point-examples.html
@@ -289,3 +301,60 @@ http://datasheetcafe.databank.netdna-cdn.com/wp-content/uploads/2015/09/LM1117-P
 The esp is only rated to deliver 10ma, and I'm needing 32?
 What could I do. What if I insert and led between esp and base, decreasing the voltage drop. 
 I think I cooked my first esp, it is no longer responding. I may have connected the wrong lead. 
+
+# 2019_06_29 
+
+In a flury of solder the other evening I assembled the 5V -> 3V power source for my torch controlling ESP using the LM1117 with two 10uF capactors connected to it.
+
+![alt text](./readme_img/lm_power.jpg "LM")
+
+One capacitor connects between the input and gnd legs
+The other capacitor connects between the output and ground legs
+
+![alt text](./readme_img/10ucaps.jpg "caps")
+
+This worked pretty effortlessles on a protoboard, but makes quite a big package.
+I also improvised a heat sink with a scrap battery terminal plate.
+
+I wired it up to power the programmed ESP.
+I also added a butchered USB lead to provide 5V power (red and blue leads, leaving white and green disconnected other than for strain relief)
+
+I put an NPN transitor in line with the torch ground.
+I connected the base of the transistor to ESP IO 0, via a 330ohm resistor.
+And here I hit the problem.
+
+In order to boot correctly, the esp GPIO pins 0 and 2 are pulled high by internal resisters.
+Meaning, I cannot also pull them low to have the tranistor off by default.
+The 300ohm resistor does not then put 8ma through the base of the transistor, like it did in my manually switched breadboard circuit...
+If i cut the resistor trace so the esp boots, then bridge it with the multimeter, 
+when the gpio is off: nothing flows to base
+when gpio 0 is on 6.3 ma flows
+
+I can even switch the torch on and off - but it won't boot.
+I guess the 300ohm resistor to the base of the transistor is pulling gpio 0 to base on boot.
+
+I ordered a mos-fet, but its n-channel, so I think that will have the same problem ( although it would pull few ma to ground)
+
+I have some hex invertor chips, but they are huge!
+
+74HC04T
+https://assets.nexperia.com/documents/data-sheet/74HC_HCT04.pdf
+
+https://i.ytimg.com/vi/rLnTrE6y6oc/maxresdefault.jpg
+
+Wired up the ground and 3.3V on the invertor.
+
+![alt text](./readme_img/invertor.jpg "Hex invertor")
+
+Using pins 9 (input 4A) and 8 (output 4Y)
+
+Connected the GPIO 0 resistor to the input
+Connected the transitor base to the output.
+
+It works just fine.
+
+The layout is a large mess, and I need to remember to leave the pins free for programming.
+Maybe even use a header socket?
+
+
+When the mosfet arrives next week, I might build a circuit on breadboard so I can understand how to drive the mosfet. Then I will chose my final design and build a new circuit.
