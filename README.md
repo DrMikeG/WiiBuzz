@@ -310,7 +310,8 @@ In a flury of solder the other evening I assembled the 5V -> 3V power source for
 
 One capacitor connects between the input and gnd legs
 The other capacitor connects between the output and ground legs
-
+![alt text](./readme_img/lm1117.jpg "caps")
+![alt text](./readme_img/cap.jpg "caps")
 ![alt text](./readme_img/10ucaps.jpg "caps")
 
 This worked pretty effortlessles on a protoboard, but makes quite a big package.
@@ -340,7 +341,8 @@ I have some hex invertor chips, but they are huge!
 74HC04T
 https://assets.nexperia.com/documents/data-sheet/74HC_HCT04.pdf
 
-https://i.ytimg.com/vi/rLnTrE6y6oc/maxresdefault.jpg
+![alt text](./readme_img/maxresdefault.jpg "Hex invertor")
+.jpg
 
 Wired up the ground and 3.3V on the invertor.
 
@@ -358,3 +360,44 @@ Maybe even use a header socket?
 
 
 When the mosfet arrives next week, I might build a circuit on breadboard so I can understand how to drive the mosfet. Then I will chose my final design and build a new circuit.
+
+# 2019_07_03 
+
+My mosfets arrived today.
+
+![alt text](./readme_img/mosfet.jpg "Mosfet")
+https://www.adafruit.com/product/355
+https://cdn-shop.adafruit.com/datasheets/irlb8721pbf.pdf
+
+![alt text](./readme_img/arduino1.png "Example")
+
+I weird up my torch to a simple breadboard circuit.
+
+3.3V power to torch.
+
+Looking at the mosfet, the legs are G D S
+
+S is connected to the negative terminal of the torch.
+D is connected to ground of the power supply.
+To turn the mosfet on, we generate a PD between G and S.
+S is at ground.
+A 10k resitor pulls G to ground - no PD.
+If we connect 3.3V to G, then the mosfet turns on.
+
+But not by much....
+
+I was only getting 6ma through the torch (not 60+ma)
+The resistance between Source and Drain (with should be in the milli-ohms) was about 500 ohms.
+
+Looking at the graph on the data sheet, this is not too much of a surprise.
+I used the 5V on the power supply to generate a 5V PD between G and S - this caused the MOSFET to turn on fully. Boo!
+
+So, looks like it's back to the not gate and NPN transistor...
+
+![alt text](./readme_img/form.jpg "Form factor")
+
+Ok, so I want the esp to be removeable so I can easily program it.
+I also need to fit these components, including the big hex invertor onto that small rectangle marked on the perf board.
+The batteries on the right are the unit that I'm replacing in the torch, so that's the volume I have to play with.
+
+Technically I could cut some more space inside the torch, but this should be doable.
