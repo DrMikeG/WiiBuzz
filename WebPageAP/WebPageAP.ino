@@ -19,6 +19,10 @@ String output0State = "off";
 const int output0 = 0;
 const int output2 = 2;
 
+IPAddress local_IP(192,168,0,45);
+IPAddress gateway(192,168,0,9);
+IPAddress subnet(255,255,255,0);
+
 void setup() {
   Serial.begin(115200);
   // Initialize the output variables as outputs
@@ -36,21 +40,30 @@ void setup() {
   //  delay(500);
   //  Serial.print(".");
   //}
+  Serial.print("Setting soft-AP configuration ... ");
+  Serial.println(WiFi.softAPConfig(local_IP, gateway, subnet) ? "Ready" : "Failed!");
+
+  Serial.print("Setting soft-AP ... ");
+  Serial.println(WiFi.softAP("ManCaveIOT","z8gGpcvqjhpk") ? "Ready" : "Failed!");
+
+  Serial.print("Soft-AP IP address = ");
+  Serial.println(WiFi.softAPIP());
+  
   // Print local IP address and start web server
   //Serial.println("");
   //Serial.println("WiFi connected.");
   //Serial.println("IP address: ");
   //Serial.println(WiFi.localIP());
-  Serial.print("Setting soft-AP ... ");
-  boolean result = WiFi.softAP("ManCaveIOT","z8gGpcvqjhpk");
-  if(result == true)
-  {
-    Serial.println("Ready");
-  }
-  else
-  {
-    Serial.println("Failed!");
-  }
+  //Serial.print("Setting soft-AP ... ");
+  //boolean result = WiFi.softAP("ManCaveIOT","z8gGpcvqjhpk");
+  //if(result == true)
+  //{
+  //  Serial.println("Ready");
+  //}
+  //else
+  //{
+   // Serial.println("Failed!");
+  //}
 
   if (!MDNS.begin("mancave")) {             // Start the mDNS responder for mancave.local 
     Serial.println("Error setting up MDNS responder!");
