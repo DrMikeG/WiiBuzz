@@ -401,3 +401,35 @@ I also need to fit these components, including the big hex invertor onto that sm
 The batteries on the right are the unit that I'm replacing in the torch, so that's the volume I have to play with.
 
 Technically I could cut some more space inside the torch, but this should be doable.
+
+# 2019_07_05 
+
+I assembled some of this yesterday, but I was getting tired and making mistakes so I stopped.
+
+Fixed the mistakes today, hunted down a bad joint, and the final circuit was ready.
+
+![](./readme_img/wired.jpg "Wired")
+
+I'm still powering it off a breadboard at 5V, because I'm hoping to do something clever with the bottom of the torch housing, so don't want to finalise the USB lead coming in.
+
+![](./readme_img/soldering_bt.jpg "Side view")
+
+I put in long brass wires along each side to act as 3.3V and GND bus, however these made soldering hard, as they took a LOT of heating.
+I should have bent the regulator legs to give me more space to work.
+
+![](./readme_img/soldering_side.jpg "Side view")
+
+I worked some more on the code, to add flash functionality (and to swap the torch to off (output low) by default)
+
+See: WebPageAP.ino
+
+I also fixed the IP address at 192.168.0.45/flash
+
+Then I could do a first fit:
+
+![](./readme_img/torch_bits.jpg "Put the smoke back in...")
+
+
+![](./readme_img/torch.jpg "Fits...")
+
+It all fits. Just the USB power now, then I can test reception and start work on the switch.
