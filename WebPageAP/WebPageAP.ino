@@ -13,7 +13,7 @@ String header;
 
 // Auxiliar variables to store the current output state
 String output2State = "off";
-String output0State = "off";
+String output0State = "on";
 
 // Assign output variables to GPIO pins
 const int output0 = 0;
@@ -30,7 +30,7 @@ void setup() {
   pinMode(output0, OUTPUT);
   // Set outputs to LOW
   digitalWrite(output2, LOW);
-  digitalWrite(output0, LOW);
+  digitalWrite(output0, HIGH);
 
   // Connect to Wi-Fi network with SSID and password
   //Serial.print("Connecting to ");
@@ -116,6 +116,21 @@ void loop(){
               Serial.println("GPIO 0 off");
               output0State = "off";
               digitalWrite(output0, LOW);
+            } else if (header.indexOf("GET /flash") >= 0) {
+              // Flash 10 times
+
+              for (int i=0; i < 20; i++)
+              {
+                digitalWrite(output0, LOW); // LEDS on              
+                delay(350);
+                Serial.println("FLASH!");
+                digitalWrite(output0, HIGH); // LEDS off    
+                delay(100);
+              }
+              
+              Serial.println("GPIO 0 on");
+              output0State = "on";
+              digitalWrite(output0, HIGH);              
             }
             
             // Display the HTML web page
@@ -149,6 +164,9 @@ void loop(){
             } else {
               client.println("<p><a href=\"/0/off\"><button class=\"button button2\">OFF</button></a></p>");
             }
+
+            client.println("<p><a href=\"/flash\"><button class=\"button button3\">FLASH</button></a></p>");
+            
             client.println("</body></html>");
             
             // The HTTP response ends with another blank line
