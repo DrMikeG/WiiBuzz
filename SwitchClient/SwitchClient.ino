@@ -45,7 +45,7 @@ void setup()
   //digitalWrite(SwitchedPin, LOW);
   
   HTTPClient http;  //Declare an object of class HTTPClient
-  http.begin("http://192.168.0.45/0/on");  //Specify request destination
+  http.begin("http://192.168.0.45/flash");  //Specify request destination
   //http.begin("http://mancave.local/0/on");  // mDNS does not seem to be supported
   int httpCode = http.GET();                                                                  //Send the request
   if (httpCode > 0) { //Check the returning code
