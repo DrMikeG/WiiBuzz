@@ -433,3 +433,34 @@ Then I could do a first fit:
 ![](./readme_img/torch.jpg "Fits...")
 
 It all fits. Just the USB power now, then I can test reception and start work on the switch.
+
+# 2019_07_24
+
+My friend kindly 3d printed me a part to replace the missing battery cover.
+
+![](./readme_img/3dprinted.gif "Made to measure")
+
+This allowed me to finish off the wiring.
+
+# 2019_07_26 
+
+I made a sculpture of a poppy in brass coated wire. It can act as a capacitor of sorts.
+
+I used the amazing library https://github.com/PaulStoffregen/CapacitiveSensor
+
+and had a version working on arduino nano in no time.
+(1M resistor used)
+
+I wondered how hard it was going to be getting it to work on the esp - but with a tip from here:
+https://github.com/PaulStoffregen/CapacitiveSensor/issues/18 to use a 300k resistor, I had it working pretty quickly.
+
+I got a bit lucky, with no wiring or pin number bugs as these would have been a real hassle to track down.
+
+Now I need to integrate the sensor code with the wifi code.
+
+I can start work on the wood working for the switch.
+
+Notes:
+
+![](./readme_img/IMG_20190726_205809.jpg "Wiring notes")
+![](./readme_img/IMG_20190726_205756.jpg "Wiring")
