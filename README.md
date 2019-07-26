@@ -10,10 +10,10 @@ https://www.raspberrypi.org/forums/viewtopic.php?t=32039
 
 https://youtu.be/9QZkCQSHnko
 
-There was a whisper at work that we might need to aquire a quiz system, and my name had been dropped by a few people as it being possible to build one.
-I started thinking about hackng wii remotes connected to a raspberry pi to setup a lock out buzzer system.
+There was a whisper at work that we might need to acquire a quiz system, and my name had been dropped by a few people as it being possible to build one.
+I started thinking about hacking wii remotes connected to a raspberry pi to setup a lock out buzzer system.
 
-In my ramblng research I came up with two other projects.
+In my rambling research I came up with two other projects.
 This is the first, which no longer has anything to do with Wii or buzzing.
 
 Instead, I'm using some ESP8266 (which are new to me) to put a broken LED torch onto the wireless, to act as a visual signal, sent from the house to my workshop.
@@ -32,14 +32,14 @@ Notes on torch I've pulled apart.
 
 Single LED draws 30ma @ 3.5V
 matrix of 3x6 draws 60ma @ 3.5V
-Three parallel tracks of 0.5V LEDs?
+Three parallel tracks of 0.5V leds?
 
 
 Three pads at the bottom of the matrix
 
 GND MATRIX VCC SINGLE VCC
 
-![alt text](./readme_img/inards.jpg "Donor torch inards")
+![alt text](./readme_img/inards.jpg "Donor torch innards")
 
 I'm now trying to setup a soft access point following example here:
 https://arduino-esp8266.readthedocs.io/en/latest/esp8266wifi/soft-access-point-examples.html
@@ -63,7 +63,7 @@ Torch runs at 3.5V.
 Constant draw was 60ma at 3.5V
 Could I half this with PWM?
 
-Planning to use ESP8266 ESP01's as transmitter and reciever.
+Planning to use ESP8266 ESP01's as transmitter and receiver.
 
 Should test reception in mancave as first test.
 
@@ -102,7 +102,7 @@ Read and digest these pages: https://tttapa.github.io/ESP8266/Chap02%20-%20Hardw
 
 Before you begin ...
 There's a few things you have to look out for when using an ESP8266: The most important thing is that it runs at 3.3V, so if you connect it to a 5V power supply, you'll kill it. Unlike some 3.3V Arduino or Teensy boards, the ESP8266's I/O pins are not 5V tolerant, so if you use a 5V USB-to-Serial converter, or 5V sensors etc. you'll blow it up.
-A second thing to keep in mind is that the ESP8266 can only source or sink 12mA per output pin, compared to 20-40mA for most Arduinos.
+A second thing to keep in mind is that the ESP8266 can only source or sink 12mA per output pin, compared to 20-40mA for most Arduino.
 
 mDNS - lets have DNS on our IOT
 
@@ -147,11 +147,11 @@ The 'server' can switch an LED that it is directly powering, but I need to switc
 
 The LED matrix can pull 60ma (surprised it is this low) - so I am going to power this separately.
 
-Need either and NPN or PNP transitors, depending on if I am switching the ground of the power of the circuit.
+Need either and NPN or PNP transistors, depending on if I am switching the ground of the power of the circuit.
 What is best for the ESP?
 
 https://electronics.stackexchange.com/questions/211579/npn-transistor-is-always-on?rq=1
-NPN transistor switching the ground out of the maxtrix...
+NPN transistor switching the ground out of the matrix...
 The downside of this is that it means the matrix is always on...
 
 
@@ -188,11 +188,11 @@ With flat side up, left to right is EBC
 
 There are two ways to bypass the resistor. One way is to lower the input voltage. If you are able to run your complete circuit with the same voltage as forward voltage of the LED, perfect. No resistor needed.
 
-There is a 3V Vf = LED forward voltage drop in Volts (found in the LED datasheet) for the matrix.
+There is a 3V Vf = LED forward voltage drop in Volts (found in the LED data sheet) for the matrix.
 
 I suspect you are trying to drive the PNP base with a 3.3V logic signal while controlling 5V to the buzzer. That just isn't going to work. To turn the transistor off (non-conducting) you need to raise the voltage on the base to be close to the emitter voltage, or about 5V. You can't do that with a 3.3V logic signal. You make a PNP transistor conduct by lowering the base voltage about 0.7V below the emitter voltage, not by setting the base voltage to 0.7V above ground.
 
-You might be able to add a pullup resistor from the base itself to 5V to turn the transistor off when the logic output is 3.3V. Select resistor values so that when the 3.3V signal is low the voltage at the base is less than 4.3V. You would also have to select resistor values that limit the current that will flow back into the 3.3V logic output when that output signal is high. This is all just speculation, you haven't provided a datasheet for the device that is driving the base.
+You might be able to add a pull-up resistor from the base itself to 5V to turn the transistor off when the logic output is 3.3V. Select resistor values so that when the 3.3V signal is low the voltage at the base is less than 4.3V. You would also have to select resistor values that limit the current that will flow back into the 3.3V logic output when that output signal is high. This is all just speculation, you haven't provided a data sheet for the device that is driving the base.
 
 https://forum.arduino.cc/index.php?topic=602676.0
 
@@ -214,11 +214,11 @@ Using a 50o, Ie is 50ma
 At 50ma, DC current gain is 60
 2.4 = 100 * 0.025 (25ma)
 
-Current applification should be between x60 and x100.
+Current amplification should be between x60 and x100.
 
 # 2019_06_20 
 
-I now have 10 x PN2907A PNP tranistors.
+I now have 10 x PN2907A PNP transistors.
 https://cdn-shop.adafruit.com/product-files/3598/PN2907A-D.PDF
 
 (IC = -0.1 mAdc, VCE = -10 Vdc) = 75
@@ -233,7 +233,7 @@ I have 46ma flowing through the emitter.
 Should have 73ma.
 
 22 through base = 50 through emitter
-1000ohm 10 throuh em
+1000ohm 10 through em
 300ohm = 25
 60 thro 40base em 50 ohm
 
@@ -275,7 +275,7 @@ Connected my circuit to my esp. It is setup to switch gpio2 on command.
 
 I think I cooked my first esp
 
-introducing a second transistor to switch the first transitor. 
+introducing a second transistor to switch the first transistor. 
 simulated
 
 1k resistor on base, switching the base on q2
@@ -304,7 +304,7 @@ I think I cooked my first esp, it is no longer responding. I may have connected 
 
 # 2019_06_29 
 
-In a flury of solder the other evening I assembled the 5V -> 3V power source for my torch controlling ESP using the LM1117 with two 10uF capactors connected to it.
+In a flury of solder the other evening I assembled the 5V -> 3V power source for my torch controlling ESP using the LM1117 with two 10uF capacitors connected to it.
 
 ![alt text](./readme_img/lm_power.jpg "LM")
 
@@ -314,18 +314,18 @@ The other capacitor connects between the output and ground legs
 ![alt text](./readme_img/cap.jpg "caps")
 ![alt text](./readme_img/10ucaps.jpg "caps")
 
-This worked pretty effortlessles on a protoboard, but makes quite a big package.
+This worked pretty effortlessness on a proto-board, but makes quite a big package.
 I also improvised a heat sink with a scrap battery terminal plate.
 
 I wired it up to power the programmed ESP.
 I also added a butchered USB lead to provide 5V power (red and blue leads, leaving white and green disconnected other than for strain relief)
 
-I put an NPN transitor in line with the torch ground.
+I put an NPN transistor in line with the torch ground.
 I connected the base of the transistor to ESP IO 0, via a 330ohm resistor.
 And here I hit the problem.
 
 In order to boot correctly, the esp GPIO pins 0 and 2 are pulled high by internal resisters.
-Meaning, I cannot also pull them low to have the tranistor off by default.
+Meaning, I cannot also pull them low to have the transistor off by default.
 The 300ohm resistor does not then put 8ma through the base of the transistor, like it did in my manually switched breadboard circuit...
 If i cut the resistor trace so the esp boots, then bridge it with the multimeter, 
 when the gpio is off: nothing flows to base
@@ -351,7 +351,7 @@ Wired up the ground and 3.3V on the invertor.
 Using pins 9 (input 4A) and 8 (output 4Y)
 
 Connected the GPIO 0 resistor to the input
-Connected the transitor base to the output.
+Connected the transistor base to the output.
 
 It works just fine.
 
@@ -381,13 +381,13 @@ S is connected to the negative terminal of the torch.
 D is connected to ground of the power supply.
 To turn the mosfet on, we generate a PD between G and S.
 S is at ground.
-A 10k resitor pulls G to ground - no PD.
+A 10k resistor pulls G to ground - no PD.
 If we connect 3.3V to G, then the mosfet turns on.
 
 But not by much....
 
 I was only getting 6ma through the torch (not 60+ma)
-The resistance between Source and Drain (with should be in the milli-ohms) was about 500 ohms.
+The resistance between Source and Drain (with should be in the mili-ohms) was about 500 ohms.
 
 Looking at the graph on the data sheet, this is not too much of a surprise.
 I used the 5V on the power supply to generate a 5V PD between G and S - this caused the MOSFET to turn on fully. Boo!
@@ -396,7 +396,7 @@ So, looks like it's back to the not gate and NPN transistor...
 
 ![alt text](./readme_img/form.jpg "Form factor")
 
-Ok, so I want the esp to be removeable so I can easily program it.
+Ok, so I want the esp to be removable so I can easily program it.
 I also need to fit these components, including the big hex invertor onto that small rectangle marked on the perf board.
 The batteries on the right are the unit that I'm replacing in the torch, so that's the volume I have to play with.
 
