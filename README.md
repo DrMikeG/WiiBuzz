@@ -436,7 +436,18 @@ It all fits. Just the USB power now, then I can test reception and start work on
 
 # 2019_07_24
 
-My friend kindly 3d printed me a part to replace the missing battery cover.
+The reason my Daughter's torch was sacrificed was because she lost the bottom cover.
+In order for it to work well as a signal light, I had to fill that hole in the bottom.
+
+I carefully measured the opening and modelled a replacement part.
+
+![](./readme_img/TorchBottomSE.gif "Sketched part")
+
+Rendering:
+
+![](./readme_img/TorchBottom.8.jpg "Rendered part")
+
+My friend kindly 3d printed me a part to replace the missing battery cover. Yes, I know, I'm lucky to have friends like that.
 
 ![](./readme_img/3dprinted.gif "Made to measure")
 
