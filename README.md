@@ -464,3 +464,22 @@ Notes:
 
 ![](./readme_img/IMG_20190726_205809.jpg "Wiring notes")
 ![](./readme_img/IMG_20190726_205756.jpg "Wiring")
+
+# 2019_07_27 
+
+My Wife has enabled me to have a super-productive Saturday. And by productive, I really mean not doing anything very useful, but having lots of time to work on this project.
+
+I soldered up the power supply (5V to 3V) and 2x4 socket headers onto some protoboard.
+I butchered another USB lead for powering it.
+
+![](./readme_img/IMG_20190727_184124.jpg "Switch client board")
+
+I got some hours in the mancave too. I trimmmed the proto-board down, and picked a bit of oak offcut for the base.
+
+I hogged out much of the hunk of oak with a tea-light sized forstner bit (three overlapping circles)
+
+I sanded the block down and rounded to the edges to deal with some rough spots.
+
+I applied a coat of danish oil, cut a notch for the power cable, and used the smallest drill bit I have to put a hole top, center for the poppy wire.
+
+I cam back to the software and modified espSensor.ide to connect to the torch Wifi, and to get the flash URL when the capacitive senor is triggered.
