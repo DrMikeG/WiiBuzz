@@ -496,3 +496,18 @@ I sanded the block down and rounded to the edges to deal with some rough spots.
 I applied a coat of danish oil, cut a notch for the power cable, and used the smallest drill bit I have to put a hole top, center for the poppy wire.
 
 I came back to the software and modified espSensor.ide to connect to the torch Wifi, and to get the flash URL when the capacitive senor is triggered.
+
+# 2019_07_28 
+
+I've just had the torch apart on my solder bence again.
+After running for a few hours it stopped working.
+
+I'd built in a flash-on-boot, so that I could at least tell if it was getting as far as booting - and it wasn't even doing that.
+
+I traces the fault to those tricky USB wires, so I stripped them back and did a better job connecting them into the board.
+
+Most of today I've been working on the poppy switch.
+I'm going to make the youtube video for that now.
+
+Much simpler circuit, so not as many days tinkering.
+It through me a curve mid assembly though, so I wouldn't be suprised if I have to revist that too.

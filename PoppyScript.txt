@@ -1,0 +1,55 @@
+If you've watched my last video, you know I'm working on a deaf alerter for the mancave.
+
+I have an ESP 8266 which can connect to a private wifi network, and get a URL to trigger the alert.
+
+I just need to build a switch - at the options for that are nearly limitless.
+
+My requirements are that the switch unit needs to be an acceptable addition to my Wife's newly fitted kitchen, and needs to be safely and easily operated by my kids.
+
+I sketched up a few designs, but the simplest I could start just with parts I already had in.
+
+I'm going to make a simple sculpture out of brass wire (I've chosen a poppy)
+then I'm going to use the brass wire as a capacitive sensor for the esp 8266.
+
+The idea being, you gently touch the poppy in the kitchen, and you trigger an alert in the workshop.
+
+
+
+
+I traced a poppy outline, figured out a single line path and put pins in to guide some of the sharp curves.
+I measured the line length with cotton and cut the brass to about 150% of that length.
+
+Wifi poppy sculpture as a capacitive switch
+
+I'm making a rough shape first bending around the guide pins.
+
+Once I have all the right overlaps, on the correct sides of the pins, my plan is to bind the wires together where they cross using tiny brass loops. 
+
+Snagging the right wires and tightening the loops was very fiddly.
+
+And then the final stage was to work around the loop, adding the small bends and shaping then lines.
+
+Having made the poppy, I'm prototyping the capacitive sensor using an arduino nano.
+Paul Staffrigan is custodian of the capacitive sensing library, and in my experience anything he is involved in is just a joy to work with.
+
+Here you see it, you touch the poppy wire, change its capacitance and the arduino knows...
+
+
+Unlike the torch, where I was working within an existing part, I'm going to let the circuit inform the size of the base on the sculpture, so I have a little more room to play with, but I don't want to go too big.
+ 
+It's quite a similar circuit to the torch - it has an
+
+ESP8266 wireless board.
+Powered at 3v using an LM1117 linear regulator and a pair of 10 microfarad capacitors for smoothing
+
+Its only a 300K ohm resistor and the internal pull-ups of the esp's gpio add more resistance.
+
+
+I thought I was going to have difficulties with the sensing library on the little esp8266, but here you can see it sensing the capacitance of a wire, and blinking an LED - even though the sensor the and LED are having to share the same pin.
+
+I trimmed the circuit to size and that gave me minimum dimensions for a base.
+
+When hogging out with a fostner bit, I like to mark the centers and sides of all the overlapping holes before I go to deep on any one. I find this helps reduce chatter.
+
+
+I'm mixing up a bit of epoxy to hold the brass wire in place, and I'm gaffer taping some foam in as an insulator
