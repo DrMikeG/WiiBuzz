@@ -476,6 +476,8 @@ Notes:
 ![](./readme_img/IMG_20190726_205809.jpg "Wiring notes")
 ![](./readme_img/IMG_20190726_205756.jpg "Wiring")
 
+[Youtube build video](https://youtu.be/MuTEnnFnPo8)
+
 # 2019_07_27 
 
 My Wife has enabled me to have a super-productive Saturday. And by productive, I really mean not doing anything very useful, but having lots of time to work on this project.
@@ -493,4 +495,4 @@ I sanded the block down and rounded to the edges to deal with some rough spots.
 
 I applied a coat of danish oil, cut a notch for the power cable, and used the smallest drill bit I have to put a hole top, center for the poppy wire.
 
-I cam back to the software and modified espSensor.ide to connect to the torch Wifi, and to get the flash URL when the capacitive senor is triggered.
+I came back to the software and modified espSensor.ide to connect to the torch Wifi, and to get the flash URL when the capacitive senor is triggered.

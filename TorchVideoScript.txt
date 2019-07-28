@@ -1,0 +1,42 @@
+When I'm in the workshop, I often can't hear my phone, and my Family can't get my attention.
+
+So inspired by a variety of things, the plan is to turn an LED torch that my Daughter lost the battery cover for, into a deaf-alterer, using a humble ESP8266.
+
+These wireless chips are widely used and have great documention, still I was amazed how quickly I could get this postage stamp sized board hosting a website, with the GPIO pins controlling and LED.
+
+A prototype established that these were the parts I needed to fit into the empty battery compartment of the torch.
+
+If I'd chosen a bigger ESP with fewer GPIO constraints, I wouldn't have need the 7000 invertor chip.
+
+The ESP is one of the first 3v board I've used, so I had to include a 5V to 3V power convertor so I could use USB for power.
+
+Because of 3V limit, I couldn't easily find a suitable mosfet, so I'm using a transistor. Because I can't lower the resistance of the LED panel, I had to use a high side tranistor switch.
+
+I would have liked to use a low side switch, as then I could have also kept the regular torch on/off button functional as well.
+
+
+Here is the finished control unit to fit inside the torch housing.
+I havn't finished the USB power-in, as I need to feed the USB lead in through a hole in the bottom of the torch.
+
+Here I've connected my phone to the wireless access point setup on the esp8266. I've added the flashing mode which will be my alert signal.
+
+This torch was in my parts bin because my Daughter lost the battery cover.
+I measured the apperture and modelled a replacement part with an entry port for a USB power lead.
+A friend of mine kindly 3d printed me the part. The colour filament wasn't important as I planned to give it a coat of spray black.
+
+So now I need to reassembly the torch.
+I bugs me a bit I could keep the original on/off switch working.
+
+There turned out to be plenty of space to run spare cable, but I'd let myself very short tails, so connecting the USB power was a bit of a fiddle.
+
+So there we are - at least the first half of this project is done.
+
+The torch is powered by USB, and acts as a wireless access point for a secured wifi network.
+Devices connected to that network can access a URL and make the torch flash.
+
+
+To make best use of space, I decided to run a brass bus on each of the long edges of my circuit. Whilst this efficient use of space on the protoboard, heating that large mass for soldering proved tricky.
+I would have been better learning how to make a custom PCB next time.
+
+The torch is functional and will live out in the workshop. 
+Next I plan to work on a child friendly call button that will live in the kitchen, and needs to be as much asthetic as functional.y
