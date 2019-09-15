@@ -56,3 +56,6 @@ Off:
 17:08:24.760 -> Decimal: 6520390 (24Bit) Binary: 011000110111111001000110 Tri-State: not applicable PulseLength: 310 microseconds Protocol: 1
 17:08:24.834 -> Raw data: 9628,300,916,908,308,908,304,308,908,308,908,308,912,912,304,908,308,300,916,908,312,904,312,904,308,912,304,908,308,912,308,296,920,296,920,904,308,16,524,32,1008,20,36,96,24,44,40,288,80,
 17:08:25.082 -> 
+
+
+https://www.instructables.com/id/Using-an-ESP8266-to-Control-Mains-Sockets-Using-43/
