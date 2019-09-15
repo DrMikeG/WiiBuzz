@@ -1,7 +1,10 @@
 /*
-  Simple example for receiving
+  Example for receiving
   
   https://github.com/sui77/rc-switch/
+  
+  If you want to visualize a telegram copy the raw data and 
+  paste it into http://test.sui.li/oszi/
 */
 
 #include <RCSwitch.h>
@@ -15,25 +18,7 @@ void setup() {
 
 void loop() {
   if (mySwitch.available()) {
-    Serial.print("Listening...");
-    int value = mySwitch.getReceivedValue();
-    
-    if (value == 0) {
-      Serial.print("Unknown encoding");
-    } else {
-      Serial.print("Received ");
-      Serial.print( mySwitch.getReceivedValue() );
-      Serial.print(" / ");
-      Serial.print( mySwitch.getReceivedBitlength() );
-      Serial.print("bit ");
-      Serial.print("Protocol: ");
-      Serial.println( mySwitch.getReceivedProtocol() );
-    }
-
+    output(mySwitch.getReceivedValue(), mySwitch.getReceivedBitlength(), mySwitch.getReceivedDelay(), mySwitch.getReceivedRawdata(),mySwitch.getReceivedProtocol());
     mySwitch.resetAvailable();
-  }
-  else
-  {
-    Serial.println("Nothing available...");
   }
 }
