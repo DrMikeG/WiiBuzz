@@ -84,3 +84,7 @@ pi@raspbmc:~$ cat lightsoff.sh
 # button 2 is channel 3
 sudo /usr/sbin/pihat --brand=5 --repeats=50 --id=407524 --channel=7 --state=0
 pi@raspbmc:~$
+
+
+https://github.com/s7mx1/pihat I know the code in this project generates the correct signal for my remotes.
+The code in the RC-switch generates something close to the correct signal, but not close enough?
