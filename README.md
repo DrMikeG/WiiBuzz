@@ -514,27 +514,3 @@ It through me a curve mid assembly though, so I wouldn't be suprised if I have t
 
 
 
-# 2019_09_15
-
-Notes on Pi socket controllers.
-
-pi@raspbmc:~$ hostname
-raspbmc
-pi@raspbmc:~$ pwd
-/home/pi
-pi@raspbmc:~$ ls
-lightsoff.sh  lightson.sh  log.txt  run.sh
-pi@raspbmc:~$ cat lightson.sh
-#!/bin/sh
-# My first script
-#echo "Hello World!" >> /home/pi/log.txt
-
-sudo /usr/sbin/pihat --brand=5 --repeats=50 --id=407524 --channel=7 --state=1
-pi@raspbmc:~$ cat lightsoff.sh
-#!/bin/sh
-# My first script
-#echo "Hello World!" >> /home/pi/log.txt
-# button 1  is channel 7
-# button 2 is channel 3
-sudo /usr/sbin/pihat --brand=5 --repeats=50 --id=407524 --channel=7 --state=0
-pi@raspbmc:~$
