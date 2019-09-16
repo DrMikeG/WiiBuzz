@@ -24,7 +24,7 @@ void setup() {
   mySwitch.setProtocol(1);
   
   // Optional set number of transmission repetitions.
-   mySwitch.setRepeatTransmit(1); // 1 is not enough to get a successful programming, but 15 is
+   mySwitch.setRepeatTransmit(15); // 1 is not enough to get a successful programming, but 15 is
    // still can't get it to switch though
   
 }
@@ -34,21 +34,16 @@ void loop() {
  Serial.println("Loop...");
 
   /* Same switch as above, but using decimal code */
-  //Serial.println("Switch 1 on...");
+  Serial.println("Switch 1 on...");
   //mySwitch.send(6520320, 24);
    /* Same switch as above, but using binary code */
   //mySwitch.send(6520398,24);
-  //mySwitch.send("011000110000000000000000");
-  //delay(1500);  
-  //Serial.println("Switch 1 off...");
+  mySwitch.send("0110001101111110010011110");
+  delay(1500);  
+  Serial.println("Switch 1 off...");
   //mySwitch.send(6520390, 24);
-  //mySwitch.send("011000110111111001000011");
-  for (int i=0; i < 15; i++)
-  {
-    mySwitch.send("011000110000000000000000");
-    delay(40);  
-  }
-  
+  mySwitch.send("0110001101111110010001110");
+    
   delay(1500);  
  
 }
