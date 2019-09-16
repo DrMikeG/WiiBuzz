@@ -99,3 +99,29 @@ Created working ESP8266 sketch using 3.3V power for transmitter and pin 3 (RX pi
 Cannot program when connected, but once programmed can connected to RX pin (not supporting serial output any more though)
 
 Lets write a web server...
+
+Boom! Working!
+
+I've been working on a few art projects recently, which were too touch-and-go for me to make videos of.
+
+This is just a short video, because this was just a two evening project - and it's electronically functional, but not finished - because I need to make a case.
+
+This is based heavily on (in fact using spare parts from) the esp8266 silent alerter I showed in a previous video. The one with the brass poppy sculpture as a capacitive switch.
+
+I have a raspberry pi model 1, setup as a media server - which is rarely used. Its secondary function - which has become its primary function is a remote control for the living room lamps.
+I have some 'status' brand 433mhz mains switches, synchronised to turn a number of lamps on or off.
+There is a physical remote control, or you can access a URL on the pi, and it broadcasts the relevant control signal from a 433mhz tx module.
+
+
+I've always been reluctant to upgrade the pi media server, because it means messing with the light controls which are used daily.
+
+We have the same LM-triple-1 7 power supply, an esp8266 and a 433mhz module.
+I'm using the RC-switch arduino library (which can transmit, but cannot decode this brand of socket)
+
+Hosting a website the send the 'switch on' or 'switch off' radio signal when on is URL accessed.
+This needs a case, but will work as an independent device allowing me to upgrade the media server.
+
+Today I learned that if you are willing to go without serial output, you can reuse the RX pin as GPIO on an ESP8266
+This is good, because pins 0 and 2 (which I had been using) have pull-up restrictions - which I have previously worked around.
+
+I could have avoided parts on previous projects, if I have known this.
