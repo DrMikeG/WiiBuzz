@@ -95,4 +95,7 @@ channel 7 state 1 0110001101111110010011110
 channel 7 state 0 0110001101111110010001110
 
 
+Created working ESP8266 sketch using 3.3V power for transmitter and pin 3 (RX pin)
+Cannot program when connected, but once programmed can connected to RX pin (not supporting serial output any more though)
 
+Lets write a web server...
