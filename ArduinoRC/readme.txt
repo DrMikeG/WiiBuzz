@@ -88,3 +88,11 @@ pi@raspbmc:~$
 
 https://github.com/s7mx1/pihat I know the code in this project generates the correct signal for my remotes.
 The code in the RC-switch generates something close to the correct signal, but not close enough?
+
+I've compiled the piHat code to just print the values:
+
+channel 7 state 1 0110001101111110010011110
+channel 7 state 0 0110001101111110010001110
+
+
+
