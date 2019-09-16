@@ -2,8 +2,8 @@
 #include <ESP8266WiFi.h>
 #include <ESP8266mDNS.h>        // Include the mDNS library
 
-//const char* ssid = "VM4826469";
-//const char* password = "z8gGpcvqjhpk";
+const char* ssid = "VM4826469";
+const char* password = "z8gGpcvqjhpk";
 
 // Set web server port number to 8080
 WiFiServer server(80);
@@ -19,9 +19,9 @@ String output0State = "on";
 const int output0 = 0;
 const int output2 = 2;
 
-IPAddress local_IP(192,168,0,45);
-IPAddress gateway(192,168,0,9);
-IPAddress subnet(255,255,255,0);
+//IPAddress local_IP(192,168,0,45);
+//IPAddress gateway(192,168,0,9);
+//IPAddress subnet(255,255,255,0);
 
 void setup() {
   Serial.begin(115200);
