@@ -46,14 +46,33 @@ void setup() {
   // Set outputs to LOW
   digitalWrite(output2, LOW);
   digitalWrite(output0, HIGH);
-  // Connect to Wi-Fi network with SSID and password
+ 
+  //Serial.println("HTTP server started");
+  digitalWrite(output2, HIGH);
+  
+}
+
+bool wifiIsConnected()
+{
+  return WiFi.status() == WL_CONNECTED;
+}
+
+
+void setup_wifi()
+{
+  digitalWrite(output2, LOW);
+   // Connect to Wi-Fi network with SSID and password
   //Serial.print("Connecting to ");
   //Serial.println(ssid);
   WiFi.begin(ssid, password);
   while (WiFi.status() != WL_CONNECTED) {
-    delay(500);
+    digitalWrite(output2, HIGH);
+    delay(250);
+    digitalWrite(output2, LOW);
+    delay(250);
   //  Serial.print(".");
   }
+  digitalWrite(output2, HIGH);
   /*Serial.println("");
   Serial.print("Connected to ");
   Serial.println(ssid);
@@ -65,14 +84,11 @@ void setup() {
   }
   //Serial.println("mDNS responder started");
   server.begin();
-  //Serial.println("HTTP server started");
-  digitalWrite(output2, HIGH);
-  
 }
 
-void loop() {
-
-WiFiClient client = server.available();   // Listen for incoming clients
+void handleClient()
+{
+   WiFiClient client = server.available();   // Listen for incoming clients
 
   if (client) {                             // If a new client connects,
     //Serial.println("New Client.");          // print a message out in the serial port
@@ -162,7 +178,18 @@ WiFiClient client = server.available();   // Listen for incoming clients
     //Serial.println("Client disconnected.");
     //Serial.println("");
   }
+}
 
-  
+void loop() {
+
+
+  if(!wifiIsConnected())
+  {
+    setup_wifi();
+  }
+  else
+  {
+    handleClient();
+  } 
  
 }

@@ -125,3 +125,15 @@ Today I learned that if you are willing to go without serial output, you can reu
 This is good, because pins 0 and 2 (which I had been using) have pull-up restrictions - which I have previously worked around.
 
 I could have avoided parts on previous projects, if I have known this.
+
+# 2019_09_25 
+
+Adapting EspRCSketch.ini code to auto-reconnect to wifi not connected.
+
+When the power goes off here, which happens a lot for a first world country, these esp devices I'm building come back up faster the my router.
+So, they fail to connect to the wifi, because it's not there to connect too.
+
+So, I'm changing the running loop on this one to check for a wifi connection - and if one is not found then it attempts to connect.
+I'm not sure about the final line which is  server.begin(); - it feels like this won't do what I expect.
+
+I'll wait for the next brown out and check how this copes.
