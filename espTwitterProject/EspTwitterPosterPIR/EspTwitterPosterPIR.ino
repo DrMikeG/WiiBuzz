@@ -16,7 +16,7 @@ static char const accesstoken_sec[] = "";
 //The TX pin can be accessed from the sketch as GPIO1 and RX is GPIO3
 
 int ledPin = 2;                // choose the pin for the LED - pin 3, GPIO 3?
-int inputPin = 3;               // choose the input pin (for PIR sensor) - RX
+int inputPin = 1;               // choose the input pin (for PIR sensor) - RX
 int pirState = LOW;             // we start, assuming no motion detected
 int val = 0;                    // variable for reading the pin status
 unsigned long timeLastTriggered = 0;
@@ -28,7 +28,7 @@ TwitterClient tcr(timeClient, consumer_key, consumer_sec, accesstoken, accesstok
 
 bool usingSerial = false;
 
-long dutyCycle;
+unsigned long dutyCycle;
 
 void Println(String s)
 {
@@ -45,8 +45,6 @@ void Println(int i)
   }
 }
 
-unsigned long loopCount = 0;
-unsigned long loopMax = 5000;
 
 void setup(void){
 
@@ -97,7 +95,7 @@ void setup(void){
 
   digitalWrite(ledPin, LOW); // turn LED OFF
 
-  dutyCycle = 2; // Start at 2 going up...
+  dutyCycle = 4; // Start at 4 going up...
 }
 
 /*void extractJSON(String tmsg) {
@@ -133,25 +131,27 @@ void setup(void){
 
 void fadeDutyCycle()
 {
+  Println(dutyCycle);
   analogWrite(ledPin, dutyCycle);
-  delay(1);
-  // dutyCycle starts at 2
+  delay(2);
+  // dutyCycle starts at 4
   // As we go around this loop, we want dutyCycle to decrease by 2 if odd
   // and increase by 2 if even
   // if dutyCycle > 1022 then duty cycle = 1021 (start odds going down)
   // if dutyCycle < 3 then duty cycle = 2 (start evens going up)
   if (dutyCycle > 1022)
     dutyCycle = 1021;
+  
   if (dutyCycle < 3)
-    dutyCycle = 2;
+    dutyCycle = 4;
     
   if (dutyCycle % 2 == 0)
   {
-    dutyCycl++;
+    dutyCycle+=2;
   }
   else
   {
-    dutyCycl--;
+    dutyCycle-=2;
   }
 }
 
@@ -160,31 +160,21 @@ void loop(void){
   //Loop Fade
   fadeDutyCycle();
 
-  if (false)
+  if ( true )
   {
-    // Fade
-    // increase the LED brightness
-    for(int dutyCycle = 0; (val == LOW) && dutyCycle < 1023; dutyCycle++){   
-      // changing the LED brightness with PWM
       val = digitalRead(inputPin);  // read input value
-      analogWrite(ledPin, dutyCycle);
-      delay(1);
-    }
+      if (val == HIGH)
+      {
+         //for (int i = 0; i < 5; i++)
+         //{
+           analogWrite(ledPin, 1023);
+            delay(2000);                       // wait for a second
+           // digitalWrite(ledPin, LOW);    // turn the LED off by making the voltage LOW
+            //delay(100);                       // wait for a second
+         //}
+      }
   }
 
-  // decrease the LED brightness
-  for(int dutyCycle = 1023; (val == LOW) && dutyCycle > 0; dutyCycle--){
-    // changing the LED brightness with PWM
-    val = digitalRead(inputPin);  // read input value
-    analogWrite(ledPin, dutyCycle);
-    delay(1);
-  }
-  
-  if (val == HIGH)
-  {
-    digitalWrite(ledPin, HIGH); // turn LED ON
-    delay(5000);
-  }
   
   if (false)
   {
